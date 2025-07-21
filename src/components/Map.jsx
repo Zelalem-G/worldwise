@@ -62,7 +62,7 @@ function Map() {
             position={[city.position.lat, city.position.lng]}
             key={city.id}
           >
-            <Popup>{city.notes}</Popup>
+            <Popup>{city.cityName}</Popup>
           </Marker>
         ))}
         <ChangeCenter position={mapPosition} />
