@@ -37,14 +37,15 @@
       "id": "98443197"
     },
     {
-      "id": "edff",
-      "cityName": "Paris",
-      "emoji": "🇫🇷",
-      "date": "2025-07-20T20:18:04.092Z",
-      "notes": "eifle tower, love paris",
+      "id": "7e38",
+      "cityName": "Dessie",
+      "country": "Ethiopia",
+      "emoji": "🇪🇹",
+      "date": "2025-07-21T16:57:32.071Z",
+      "notes": "home",
       "position": {
-        "lat": "48.83503119081853",
-        "lng": "2.3510742187500004"
+        "lat": "11.103168119057631",
+        "lng": "39.61669921875001"
       }
     }
   ]
