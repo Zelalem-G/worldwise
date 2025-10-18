@@ -4,13 +4,6 @@ import { CitiesProvider } from "./contexts/CitiesContext";
 import { AuthProvider } from "./contexts/FakeAuthContext";
 import ProtectedRoute from "./pages/ProtectedRoute";
 
-// import HomePage from "./pages/HomePage";
-// import Pricing from "./pages/Pricing";
-// import Product from "./pages/Product";
-// import PageNotFound from "./pages/PageNotFound";
-// import AppLayout from "./pages/AppLayout";
-// import Login from "./pages/Login";
-
 import CityList from "./components/CityList";
 import City from "./components/City";
 import CountriesList from "./components/CountriesList";
