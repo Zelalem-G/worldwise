@@ -47,6 +47,42 @@
         "lat": "11.103168119057631",
         "lng": "39.61669921875001"
       }
+    },
+    {
+      "id": "2f05",
+      "cityName": "London",
+      "country": "United Kingdom of Great Britain and Northern Ireland (the)",
+      "emoji": "🇬🇧",
+      "date": "2025-10-18T16:51:39.283Z",
+      "notes": "arsenal",
+      "position": {
+        "lat": "51.49634666449083",
+        "lng": "-0.11984584373954998"
+      }
+    },
+    {
+      "id": "b9d5",
+      "cityName": "Dublin",
+      "country": "Ireland",
+      "emoji": "🇮🇪",
+      "date": "2025-10-18T16:53:05.662Z",
+      "notes": "sis",
+      "position": {
+        "lat": "53.29315910577888",
+        "lng": "-6.257511638666418"
+      }
+    },
+    {
+      "id": "7665",
+      "cityName": "Bahir Dar",
+      "country": "Ethiopia",
+      "emoji": "🇪🇹",
+      "date": "2025-10-18T17:01:56.930Z",
+      "notes": "help",
+      "position": {
+        "lat": "11.591065614811225",
+        "lng": "37.38836288452149"
+      }
     }
   ]
 }

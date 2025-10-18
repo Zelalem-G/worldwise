@@ -15,7 +15,7 @@ import Button from "./Button";
 import { useUrlPosition } from "../hooks/useUrlPosition";
 
 function Map() {
-  const { cities } = useCities();
+  const { cities, cityMap } = useCities();
   const {
     isLoading: isLoadingPosition,
     position: geolocationPosition,
@@ -25,20 +25,14 @@ function Map() {
   const [mapLat, mapLng] = useUrlPosition();
   const [mapPosition, setMapPosition] = useState([40, 0]);
 
-  useEffect(
-    function () {
-      if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
-    },
-    [mapLat, mapLng]
-  );
+  useEffect(() => {
+    if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
+  }, [mapLat, mapLng]);
 
-  useEffect(
-    function () {
-      if (geolocationPosition)
-        setMapPosition([geolocationPosition.lat, geolocationPosition.lng]);
-    },
-    [geolocationPosition]
-  );
+  useEffect(() => {
+    if (geolocationPosition)
+      setMapPosition([geolocationPosition.lat, geolocationPosition.lng]);
+  }, [geolocationPosition]);
 
   return (
     <div className={styles.mapContainer}>
@@ -47,6 +41,7 @@ function Map() {
           {isLoadingPosition ? "Loading..." : "Use your position"}
         </Button>
       )}
+
       <MapContainer
         center={mapPosition}
         zoom={6}
@@ -54,17 +49,27 @@ function Map() {
         className={styles.map}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.fr/hot/copyright">OpenStreetMap</a> contributors'
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {cities.map((city) => (
-          <Marker
-            position={[city.position.lat, city.position.lng]}
-            key={city.id}
-          >
-            <Popup>{city.cityName}</Popup>
-          </Marker>
-        ))}
+
+        {cities.map((city) => {
+          if (!cityMap.has(city.id)) return null;
+          return (
+            <Marker
+              position={[city.position.lat, city.position.lng]}
+              key={city.id}
+            >
+              <Popup>
+                <span role="img" aria-label="city">
+                  🏙️
+                </span>{" "}
+                {city.cityName}
+              </Popup>
+            </Marker>
+          );
+        })}
+
         <ChangeCenter position={mapPosition} />
         <DetectClick />
       </MapContainer>
@@ -74,16 +79,22 @@ function Map() {
 
 function ChangeCenter({ position }) {
   const map = useMap();
-  map.setView(position);
-
+  useEffect(() => {
+    map.setView(position);
+  }, [map, position]);
   return null;
 }
 
 function DetectClick() {
   const navigate = useNavigate();
+
   useMapEvents({
-    click: (e) => navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`),
+    click(e) {
+      navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`);
+    },
   });
+
+  return null;
 }
 
 export default Map;
